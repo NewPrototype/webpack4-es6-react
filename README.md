@@ -10,7 +10,7 @@
 - less，css，stylus样式支持
 - react语法编译
 
-## 环境准备
+## 环境准备
 
 - 克隆或者下载这个项目
 ```
@@ -40,15 +40,6 @@ npm install
             └── App.styl  -------- 页面样式
 ```
 
-## 环境准备
-
-环境准备妥当之后，把项目 clone 下来，切换到对应分支。更新项目依赖：
-
-```
-npm install
-```
-
-更新完成后即可开始开发。
 
 ## 常用命令
 
@@ -75,7 +66,7 @@ Built at: 2018-06-11 11:20:01
 npm run build
 ```
 
-- package.json
+### package.json
 
 ```
 "start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile  ",
