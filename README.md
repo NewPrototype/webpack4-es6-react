@@ -47,22 +47,47 @@ npm run build
 
 ```
 "start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile  ",
-"build": "npm run buildclean & npm run buildcopy &&  webpack --progress --profile --mode production && npm run buildClean ",
+```
+
+```
 "buildclean": "rimraf ../crm-release/mobile/*",   //打包删除 ../crm-release/mobile文件
+```
+
+```
 "buildcopy": "copyfiles -f ./dist/* ../crm-release/mobile/",  //复制dist到../crm-release/mobile/文件
 "buildClean": "rimraf ./dist"   //清空项目dist
 ```
 
+```
+"build": "npm run buildclean & npm run buildcopy &&  webpack --progress --profile --mode production && npm run buildClean ",
+```
+
+```
+
+```
+
 - webpack 参数解析
+
+```
 --open 打开浏览器
+```
+
+```
 --color webpack信息颜色
+```
+
+```
 --hot 热更新
+```
+
+```
 --inline 热更新的方式
+```
+
+```
 --mode development || production 开发模式
+```
 
+```
 --profile webpack 运行信息
-
-
-
-
-
+```
