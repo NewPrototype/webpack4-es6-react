@@ -119,7 +119,7 @@ argv.forEach(v => {
     
 ### todoList
 - 按需加载路由
-- ～～输出 webpack编译json,分析编译时间～～
+- <del>输出 webpack编译json,分析编译时间</del>
 - 支持多入口
 - react-redux一键生成模版
 - 支持axios
