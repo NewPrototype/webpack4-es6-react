@@ -24,6 +24,7 @@
 
 ```
 .
+├── dist  --------------------- 打包文件
 ├── webpack.config  --------------------- webpack相关配置
 ├── package.json  --------------------- 项目配置
 ├── README.md  ------------------------ 说明文件
@@ -61,6 +62,11 @@ npm run build （生产模式）
 
 ### package.json
 
+###### script
+- npm run start 编译
+- npm run build 打包
+- npm run buildStats 输出state.json，在官网http://webpack.github.io/analyse/中上传stats.json 分析数据
+
 ### package.json- script 参数解析
 - --open 打开浏览器
 
@@ -73,6 +79,7 @@ npm run build （生产模式）
 - --mode development（开发模式） || production (生产模式)
 
 - --profile webpack 运行信息
+- --json > stats.json 输出webpack信息 在官网http://webpack.github.io/analyse/中上传stats.json 分析数据
 
 
 ### webpack.config.js
@@ -112,7 +119,7 @@ argv.forEach(v => {
     
 ### todoList
 - 按需加载路由
-- 输出 webpack编译json,分析编译时间
+- ～～输出 webpack编译json,分析编译时间～～
 - 支持多入口
 - react-redux一键生成模版
 - 支持axios

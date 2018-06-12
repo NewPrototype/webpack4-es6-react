@@ -8,15 +8,15 @@
   ],
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile  ",
-    "build": "npm run buildclean & npm run buildcopy &&  webpack --progress --profile --mode production && npm run buildClean ",
-    "buildclean": "rimraf ../crm-release/mobile/*",
-    "buildcopy": "copyfiles -f ./dist/* ../crm-release/mobile/",
+    "start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile",
+    "build": "npm run buildClean  &&  webpack --progress --profile --mode production",
+    "buildStats": "npm run buildClean  &&  webpack --progress --profile --mode production --json > stats.json",
     "buildClean": "rimraf ./dist"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "compression-webpack-plugin": "^1.1.11",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-loadable": "^5.4.0",
@@ -56,6 +56,7 @@
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
     "webpack": "^4.7.0",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^2.1.2",
     "webpack-dev-server": "^3.1.4"
   }

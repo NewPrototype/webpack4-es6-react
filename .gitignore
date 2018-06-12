@@ -32,3 +32,4 @@ bower_components/
 
 # IDE/Editor data
 .idea
+dist
