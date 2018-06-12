@@ -1,33 +1,26 @@
-#### 这里采用的是 webpack4.0 react15.0 es6 来构建
+前端开发一个crm项目的时候，因为项目内容比较庞大，导致webpack编译和打包都巨慢，实在是影响开发效率，所以着手升级webpack。
 
-###### 随着项目的日益增长，webpack1.0 运行速度慢慢变慢，初始编译`npm run start`,时间长达 6 秒左右，然后修改文件的时候，虽然是读取内存会快很多，但是依旧达到了 1 秒左右，严重影响了开发效率，于是就着手重构打包工具。
+### [webpack4-es6-react][1]
+[webpack4-es6-react][2]是一个全新的基于webpack4、react16、es6、antd-mobile的前端架构实现方案，默认是antd-mobile,也可以自定义配置ui框架如：antd
 
-## webpack 提供的功能
+### 功能
+- 编译速度快（使用happypack插件实现多线程执行任务）
+- 按需加载（不同页面文件单独压缩）
+- hash指纹（js、css文件自动添加版本号）
+- es2015
+- 支持less、stylus 
+- 图片体积小支持base64压缩
+- 支持svg解析
+- 支持自定义打包文件的目录
+- 支持热更新
+- 支持打包输出map文件
+- 支持打包压缩文件
 
-- 按需加载
-- js 和 css 指纹
-- 打包生成 map 文件
-- es6 语法编译
-- less，css，stylus 样式支持
-- react 语法编译
-
-## 环境准备
-
-- 克隆或者下载这个项目
-
-```
-git clone https://github.com/NewPrototype/webpack4-es6-react.git
-```
-
-- 安装依赖
-
-```
-npm install
-```
-
-更新完即可开发
-
-## 目录结构
+### 使用版本
+- webpack 4.7.0
+- react 16.4.0
+- react-dom  16.4.0
+### 目录结构
 
 ```
 .
@@ -45,76 +38,91 @@ npm install
             └── App.css  -------- 页面样式
 ```
 
-## 常用命令
-
-- 启动调试服务器
-
+### 克隆
 ```
-npm run  start
+git clone https://github.com/NewPrototype/webpack4-es6-react.git
 ```
-
+### 安装依赖
 ```
-webpack运行信息
-Hash: 7e97185183a8397d60dc
-Version: webpack 4.12.0
-Time: 14830ms
-Built at: 2018-06-11 11:20:01
+npm install 
 ```
-
-> 上面的命令会开启一个本地调试服务器（[http://localhost:9999/](http://localhost:9999/)）。此时，项目`src`目录下的任何文件的变化，都会触发实时构建，并把变更同步到浏览器。
-
-- 本地打包压缩
+### 编译
 
 ```
-npm run build
+npm run start （开发模式）
 ```
+默认浏览器会自动打开 ```http://localhost:9999```，编译完成
+
+### 打包
+```
+npm run build （生产模式）
+```
+
 
 ### package.json
 
-```
-"start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile  ",
-```
+### package.json- script 参数解析
+- --open 打开浏览器
 
-```
-"buildclean": "rimraf ../crm-release/mobile/*",   //打包删除 ../crm-release/mobile文件
-```
+- --color webpack输出信息颜色
 
-```
-"buildcopy": "copyfiles -f ./dist/* ../crm-release/mobile/",  //复制dist到../crm-release/mobile/文件
-```
+- --hot 热更新
 
-```
-"buildClean": "rimraf ./dist"   //清空项目dist
-```
+- --inline 热更新的方式
 
-```
-"build": "npm run buildclean & npm run buildcopy &&  webpack --progress --profile --mode production && npm run buildClean ",
-```
+- --mode development（开发模式） || production (生产模式)
+
+- --profile webpack 运行信息
 
 
-- webpack 参数解析
+### webpack.config.js
+```
+const { argv } = process;
+let env = 'development'; //默认是开发模式
+argv.forEach(v => {
+  if (v == 'production') {
+    env = 'production';
+  }
+});
+```
+##### 开发模式
+- 无需map文件
+- 无需压缩css,js
+- 启动多线程执行编译任务
+##### 生产模式
+- 生成map
+- 压缩文件
+- 自动添加hash版本号（解决缓存问题）
 
-```
---open 打开浏览器
-```
+##### 速度
+- 编译从8秒提升到1.5秒左右
+    ```
+    Hash: 7e97185183a8397d60dc
+    Version: webpack 4.12.0
+    Time: 14830ms
+    Built at: 2018-06-11 11:20:01
+    ```
+- 热更新速度从1秒到0.1秒左右
+    ```
+    Hash: df56e41b7815ca326b9e
+    Version: webpack 4.12.0
+    Time: 758ms
+    Built at: 2018-06-12 15:27:47
+    ```
+    
+### todoList
+- 按需加载路由
+- 输出 webpack编译json,分析编译时间
+- 支持多入口
+- react-redux一键生成模版
+- 支持axios
+- 提高webpack编译速度（一直在持续...）
 
-```
---color webpack输出信息颜色
-```
+### gitHub
+https://github.com/NewPrototype/webpack4-es6-react
 
-```
---hot 热更新
-```
 
-```
---inline 热更新的方式
-```
 
-```
---mode development || production 开发模式
-```
-
-```
---profile webpack 运行信息
-```
-有不足的地方希望大家指出，谢谢大家的支持
+  [1]: https://github.com/NewPrototype/webpack4-es6-react
+  [2]: https://github.com/NewPrototype/webpack4-es6-react
+  [3]: http://localhost:9999/

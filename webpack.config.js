@@ -13,6 +13,7 @@ argv.forEach(v => {
     env = 'production';
   }
 });
+
 const configDev = {
   plugins: [
     new HtmlWebpackPlugin({
