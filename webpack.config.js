@@ -1,4 +1,5 @@
 const path = require('path');
+
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //html
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //css压缩
