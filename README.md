@@ -24,6 +24,7 @@
 - webpack 4.7.0
 - react 16.4.0
 - react-dom 16.4.0
+- antd 3.6.4
 
 ### 目录结构
 
