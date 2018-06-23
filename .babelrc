@@ -17,12 +17,10 @@
   ],
   "plugins": [
     "syntax-dynamic-import",
-    "transform-class-properties", [
-      "import",
-      {
-        "style": "css",
-        "libraryName": "antd-mobile"
-      }
-    ]
+    "transform-class-properties", ["import", {
+      "libraryName": "antd",
+      "libraryDirectory": "es",
+      "style": "css"
+    }]
   ]
 }
