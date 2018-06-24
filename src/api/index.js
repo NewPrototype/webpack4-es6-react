@@ -20,9 +20,9 @@ axios.interceptors.request.use(
     ) {
       config.data = querystring.stringify(config.data);
     }
-    config.headers = {
-      authorization: `Bearer ${localStorage.getItem('toKen')}`,
-    };
+    // config.headers = {
+    //   authorization: `Bearer ${localStorage.getItem('toKen')}`,
+    // };
     return config;
   },
   error => {
@@ -49,7 +49,6 @@ axios.interceptors.response.use(
   },
   error => {
     message.error(error.response.data.message);
-
     return error.response.data;
     // return Promise.reject(error);
   }
