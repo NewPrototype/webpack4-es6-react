@@ -19,12 +19,12 @@ class App extends React.Component {
   render() {
     return (
       <div className='main'>
-          <Header />
+        <Header />
         <div className="content">
           <LeftNav data={this.props} />
           <div className="main-content">{this.props.children}</div>
         </div>
-          <Footer />
+        <Footer />
       </div>
     );
   }
@@ -34,9 +34,27 @@ const PageHome = (location, cb) => {
   require.ensure(
     [],
     (require, path) => {
-      cb(null, require('pages/home/home.js').default);
+      cb(null, require('pages/home/index.js').default);
     },
     'home'
+  );
+};
+const PageTest = (location, cb) => {
+  require.ensure(
+    [],
+    (require, path) => {
+      cb(null, require('pages/test/index.js').default);
+    },
+    'test'
+  );
+};
+const NotFound = (location, cb) => {
+  require.ensure(
+    [],
+    (require, path) => {
+      cb(null, require('components/notfound/index.js').default);
+    },
+    'test'
   );
 };
 
@@ -44,6 +62,11 @@ ReactDOM.render(
   <Router history={hashHistory}>
     <Route name="app" path="/" component={App}>
       <IndexRoute getComponent={PageHome} />
+      <Route path="home" getComponent={PageHome} />
+      <Route path="homes" >
+        <Route path="test" getComponent={PageTest} />
+      </Route>
+      <Route path="*" component={NotFound} />
     </Route>
   </Router>,
   document.getElementById('App')

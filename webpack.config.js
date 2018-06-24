@@ -104,6 +104,7 @@ module.exports = {
   resolve: {
     mainFields: ['jsnext:main', 'browser', 'main'], //npm读取先后方式
     alias: {        //快捷入口
+      api: path.resolve(__dirname, 'src/api'),
       actions: path.resolve(__dirname, 'src/actions'),
       components: path.resolve(__dirname, 'src/components/'),
       pages: path.resolve(__dirname, 'src/pages/'),
