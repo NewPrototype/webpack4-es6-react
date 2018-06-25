@@ -11,7 +11,6 @@ const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin'); //压缩
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin; //视图分析webpack情况
 
-const CompressionWebpackPlugin = require('compression-webpack-plugin'); //gizp压缩
 
 const HappyPack = require('happypack'); //多线程运行
 
@@ -42,7 +41,6 @@ const plugins = [
     loaders: ['babel-loader?cacheDirectory'], //是用babel-loader解析
   }),
 ]
-
 const configDev = {
   plugins: plugins.concat(
     new ExtendedDefinePlugin({  //全局变量
@@ -72,7 +70,6 @@ const configPro = {
       }
     }),
   ),
-
   // new BundleAnalyzerPlugin({   //另外一种方式
   //   analyzerMode: 'server',
   //   analyzerHost: '127.0.0.1',
@@ -84,14 +81,6 @@ const configPro = {
   //   statsFilename: 'stats.json',
   //   statsOptions: null,
   //   logLevel: 'info',
-  // }),
-  // new CompressionWebpackPlugin({   //gzip压缩
-  //   asset: '[path].gz[query]',
-  //   algorithm: 'gzip',
-  //   test: new RegExp('\\.(js|css)$'), //匹配文件
-  //   threshold: 10240, //最小开启压缩大小
-  //   minRatio: 0.8, //最小
-  //   deleteOriginalAssets: true, //是否删除源文件
   // }),
 };
 const config = env == 'development' ? configDev : configPro;
