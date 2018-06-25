@@ -15,10 +15,10 @@ import Header from 'components/header';
 import Footer from 'components/footer';
 
 class App extends React.Component {
-  componentWillMount() { }
+  componentWillMount() {}
   render() {
     return (
-      <div className='main'>
+      <div className="main">
         <Header />
         <div className="content">
           <LeftNav data={this.props} />
@@ -58,16 +58,4 @@ const NotFound = (location, cb) => {
   );
 };
 
-ReactDOM.render(
-  <Router history={hashHistory}>
-    <Route name="app" path="/" component={App}>
-      <IndexRoute getComponent={PageHome} />
-      <Route path="home" getComponent={PageHome} />
-      <Route path="homes" >
-        <Route path="test" getComponent={PageTest} />
-      </Route>
-      <Route path="*" component={NotFound} />
-    </Route>
-  </Router>,
-  document.getElementById('App')
-);
+ReactDOM.render(<App />, document.getElementById('App'));
