@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //html
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //css压缩
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); //压缩
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); //多线程压缩
 const ExtendedDefinePlugin = require('extended-define-webpack-plugin'); //全局变量
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
@@ -21,14 +21,13 @@ argv.forEach(v => {
   }
 });
 
-console.log(argv, '------')
 /**
  * 公共插件
  */
 const plugins = [
   new HtmlWebpackPlugin({
     template: `${__dirname}/src/index.html`, //源html
-    inject: 'body',
+    inject: 'body',   //注入到哪里
     filename: 'index.html', //输出后的名称
     hash: true, //为静态资源生成hash值
   }),
@@ -40,7 +39,6 @@ const plugins = [
     id: 'babel', //对于loaders id
     loaders: ['babel-loader?cacheDirectory'], //是用babel-loader解析
   }),
-
 ]
 
 const configDev = {
@@ -84,13 +82,16 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'), //开发服务运行时的文件根目录
     compress: true, //开发服务器是否启动gzip等压缩
     port: 9999, //端口
-    historyApiFallback: true,
+    historyApiFallback: true,  //不会出现404页面，避免找不到
   },
-  devtool: env == 'development' ? 'cheap-eval-source-map' : 'source-map',
+  devtool: env == 'development' ? 'cheap-eval-source-map' : 'source-map',  //cheap-eval-source-map  是一种比较快捷的map,没有映射列
   performance: {
-    maxEntrypointSize: 10000,
-    maxAssetSize: 10000,
-    hints: false,
+    maxEntrypointSize: 250000,  //入口文件大小，性能指示
+    maxAssetSize: 250000,  //生成的最大文件
+    hints: false,    //依赖过大是否错误提示
+    // assetFilter: function(assetFilename) {
+    //   return assetFilename.endsWith('.js');
+    // }
   },
   entry: {   //入口
     index: './src/index.js',
@@ -102,7 +103,7 @@ module.exports = {
     publicPath: '/',   //公共路径
   },
   resolve: {
-    mainFields: ['jsnext:main', 'browser', 'main'], //npm读取先后方式
+    mainFields: ['jsnext:main', 'browser', 'main'], //npm读取先后方式  jsnext:main 是采用es6模块写法
     alias: {        //快捷入口
       api: path.resolve(__dirname, 'src/api'),
       actions: path.resolve(__dirname, 'src/actions'),
@@ -159,7 +160,7 @@ module.exports = {
         use: {
           loader: 'html-loader',
           options: {
-            attrs: [':data-src'],
+            attrs: [':data-src'],  //为了做图片懒加载，那些属性需要被，制定什么属性被该loader解析
             minimize: env == 'development',
           },
         },

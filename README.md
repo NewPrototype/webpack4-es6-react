@@ -144,7 +144,6 @@ argv.forEach(v => {
 
 - <del>按需加载路由<del>
 - <del>输出 webpack 编译 json,分析编译时间</del>
-- 支持proxy代理
 - <del>支持 axios<del>
 - 支持TypeScript
 - 提高 webpack 编译速度（一直在持续...）
