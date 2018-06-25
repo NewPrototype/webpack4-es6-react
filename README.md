@@ -17,12 +17,14 @@
 - 支持热更新
 - 支持打包输出 map 文件
 - 支持打包压缩文件
+- 按需切割路由
 
 ### 使用版本
 
 - webpack 4.7.0
 - react 16.4.0
 - react-dom 16.4.0
+- react-router-dom 4.3.1
 - antd 3.6.4
 
 ### 目录结构
@@ -140,9 +142,9 @@ argv.forEach(v => {
 
 ### todoList
 
-- 按需加载路由
+- <del>按需加载路由</del>
 - <del>输出 webpack 编译 json,分析编译时间</del>
-- <del>支持 axios<del>
+- <del>支持 axios</del>
 - 支持TypeScript
 - 提高 webpack 编译速度（一直在持续...）
 

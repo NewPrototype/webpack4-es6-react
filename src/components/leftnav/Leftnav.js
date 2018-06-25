@@ -1,6 +1,8 @@
 import React from 'react';
-import { hashHistory } from 'react-router';
+// import { hashHistory } from 'react-router';
 import PropTypes from 'prop-types';
+
+import { Link } from 'react-router-dom';
 
 import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
@@ -10,9 +12,11 @@ import './Leftnav.styl';
 
 const router = [
   { title: '首页', key: '/home', childRouter: [] },
+  { title: '测试', key: '/test', childRouter: [] },
+  { title: '错误', key: '/notfound', childRouter: [] },
   {
-    title: '多路由', key: 'homes', childRouter: [
-      { title: '测试', key: '/test' },
+    title: '多路由', key: '/content', childRouter: [
+      { title: '测试', key: '/test1' },
     ]
   },
 ]
@@ -25,13 +29,13 @@ class LeftNav extends React.Component {
 
 
   handleClick = (e) => {
-    // console.log(e,'---');
-    let path='';
-    e.keyPath.reverse();
-    for(var i=0;i<e.keyPath.length;i++){
-      path+=e.keyPath[i];
-    }
-    hashHistory.push(path)
+    // // console.log(e,'---');
+    // let path='';
+    // e.keyPath.reverse();
+    // for(var i=0;i<e.keyPath.length;i++){
+    //   path+=e.keyPath[i];
+    // }
+    // hashHistory.push(path)
   }
 
   render() {
@@ -50,12 +54,12 @@ class LeftNav extends React.Component {
                 return <SubMenu key={value.key} title={<span><Icon type="setting" /><span>{value.title}</span></span>}>
                   {
                     value.childRouter.map((item, i) => {
-                      return <Menu.Item key={item.key}>{item.title}</Menu.Item>
+                      return <Menu.Item key={item.key}><Link to={`${value.key}${item.key}`}>{item.title}</Link></Menu.Item>
                     })
                   }
                 </SubMenu>
               } else {
-                return <Menu.Item key={value.key}>{value.title}</Menu.Item>
+                return <Menu.Item key={value.key}> <Link to={value.key}><Icon type="setting" />{value.title}</Link></Menu.Item>
               }
             })
           }
