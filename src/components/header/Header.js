@@ -1,9 +1,8 @@
 import React from 'react';
 import { Avatar } from 'antd';
 
-
-
 import './Header.styl';
+
 
 class Header extends React.Component {
   constructor(props) {
@@ -16,7 +15,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header">
-      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
       </div>
     );
   }

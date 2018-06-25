@@ -3,11 +3,15 @@ import axios from 'axios';
 import querystring from 'querystring';
 
 import config from './../config';
-const { server } = config;
+const { server,devServer } = config;
 import { message } from 'antd';
 
 
-axios.defaults.baseURL = server;  //请求域名和端口
+if(__LOCAL__){   //true 为开发环境
+  axios.defaults.baseURL = devServer;  //请求测试域名和端口
+}else {
+  axios.defaults.baseURL = server;  //请求正式域名和端口
+}
 
 // 发送请求前拦截器
 axios.interceptors.request.use(
@@ -21,7 +25,7 @@ axios.interceptors.request.use(
       config.data = querystring.stringify(config.data);
     }
     // config.headers = {
-    //   authorization: `Bearer ${localStorage.getItem('toKen')}`,
+    //   authorization: `Bearer ${localStorage.getItem('toKen')}`,   //根据需求是否需要token
     // };
     return config;
   },
@@ -59,4 +63,4 @@ export async function login(params = {}) {
   return await axios.get('/login', { params });
 }
 
-// login({user:admin,password:'123456'}).then((data)=>{console.log(数据处理)})
+// login({user:admin,password:'123456'}).then((data)=>{console.log('数据处理')})

@@ -21,7 +21,7 @@ argv.forEach(v => {
   }
 });
 
-console.log(argv,'------')
+console.log(argv, '------')
 /**
  * 公共插件
  */
@@ -144,10 +144,10 @@ module.exports = {
         // exclude: /(node_modules|bower_components)/,
         // include: [path.resolve(__dirname, 'src')],
         use: [
-          { loader: MiniCssExtractPlugin.loader }, 
+          { loader: MiniCssExtractPlugin.loader },
           {
             loader: 'css-loader',
-            options: { 
+            options: {
               minimize: env == 'development',  //压缩
               sourceMap: env == 'development',  //map
             },
@@ -172,7 +172,7 @@ module.exports = {
           {
             loader: 'url-loader?limit=81920',   //limit 图片大小的衡量，进行base64处理
             options: {
-              name: '[path][name].[ext]',       
+              name: '[path][name].[ext]',
             },
           },
         ],
