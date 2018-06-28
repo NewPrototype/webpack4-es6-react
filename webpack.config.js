@@ -8,11 +8,16 @@ const ExtendedDefinePlugin = require('extended-define-webpack-plugin'); //全局
 
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin'); //压缩插件
 
+
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin; //视图分析webpack情况
 
 
 const HappyPack = require('happypack'); //多线程运行
+
+
+var happyThreadPool = HappyPack.ThreadPool({ size: 4 });
+
 
 const { argv } = process;
 let env = 'development'; //默认是开发模式
@@ -38,6 +43,8 @@ const plugins = [
   new HappyPack({      //多线程运行 默认是电脑核数-1
     id: 'babel', //对于loaders id
     loaders: ['babel-loader?cacheDirectory'], //是用babel-loader解析
+    threadPool:happyThreadPool,
+    verboseWhenProfiling:true, //显示信息
   }),
 ]
 const configDev = {
