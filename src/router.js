@@ -26,7 +26,6 @@ const Routers = () => (
       <Route exact path='/test' component={PageTest} />
       <Route exact path='/content/test1' component={PageHome}/>
       <Route exact path='/notfound' component={Notfound}/>
-     
     </Switch>
   </main>
 );
