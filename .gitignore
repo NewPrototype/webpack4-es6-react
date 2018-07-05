@@ -33,4 +33,4 @@ bower_components/
 # IDE/Editor data
 .idea
 dist
-.cache
+.cache-loader

@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //css压缩
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); //多线程压缩
 const ExtendedDefinePlugin = require('extended-define-webpack-plugin'); //全局变量
 
-const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin'); //压缩插件
 
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
@@ -42,9 +41,9 @@ const plugins = [
   }),
   new HappyPack({      //多线程运行 默认是电脑核数-1
     id: 'babel', //对于loaders id
-    loaders: ['babel-loader?cacheDirectory'], //是用babel-loader解析
-    threadPool:happyThreadPool,
-    verboseWhenProfiling:true, //显示信息
+    loaders: ['cache-loader', 'babel-loader?cacheDirectory'], //是用babel-loader解析
+    threadPool: happyThreadPool,
+    verboseWhenProfiling: true, //显示信息
   }),
 ]
 const configDev = {
@@ -56,37 +55,32 @@ const configDev = {
 };
 const configPro = {
   plugins: plugins.concat(
-    // new UglifyJsPlugin({ sourceMap: true }), //压缩，生成map
+    new UglifyJsPlugin(
+      {
+        sourceMap: true, parallel: 4, cache: true,
+        uglifyOptions: {
+          output: {
+            comments: false,
+            beautify: false,
+          },
+        }
+      }
+    ), //压缩，生成map
     new ExtendedDefinePlugin({   //全局变量
       __LOCAL__: false,
     }),
-    new ParallelUglifyPlugin({  //默认启用计算器当前cup-1,运行进程
-      cacheDir: '.cache/',
-      sourceMap:true,
-      uglifyJS:{ 
-        output: {
-          beautify:false,  //
-          comments: false  //删除注释,
-        },
-        compress: {
-          warnings: false,  //删除没用的代码不警告
-          drop_console:true, //删除console
-          reduce_vars:true, //提取出现多次但是没有定义成变量去引用的静态资源
-        }
-      }
+    new BundleAnalyzerPlugin({   //另外一种方式
+      analyzerMode: 'server',
+      analyzerHost: '127.0.0.1',
+      analyzerPort: 8889,
+      reportFilename: 'report.html',
+      defaultSizes: 'parsed',
+      openAnalyzer: true,
+      generateStatsFile: false,
+      statsFilename: 'stats.json',
+      statsOptions: null,
+      logLevel: 'info',
     }),
-    // new BundleAnalyzerPlugin({   //另外一种方式
-    //   analyzerMode: 'server',
-    //   analyzerHost: '127.0.0.1',
-    //   analyzerPort: 8889,
-    //   reportFilename: 'report.html',
-    //   defaultSizes: 'parsed',
-    //   openAnalyzer: true,
-    //   generateStatsFile: false,
-    //   statsFilename: 'stats.json',
-    //   statsOptions: null,
-    //   logLevel: 'info',
-    // }),
   ),
 
 };
@@ -159,6 +153,7 @@ module.exports = {
         // exclude: /(node_modules|bower_components)/,
         // include: [path.resolve(__dirname, 'src')],
         use: [
+          { loader: 'cache-loader' },
           { loader: MiniCssExtractPlugin.loader },
           {
             loader: 'css-loader',
