@@ -63,7 +63,8 @@ const configPro = {
             comments: false,
             beautify: false,
           },
-        }
+        },
+        exclude: /(node_modules|bower_components)/,
       }
     ), //压缩，生成map
     new ExtendedDefinePlugin({   //全局变量
