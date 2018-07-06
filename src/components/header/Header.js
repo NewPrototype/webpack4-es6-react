@@ -15,7 +15,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header">
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <Avatar>U</Avatar>
       </div>
     );
   }
