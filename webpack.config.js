@@ -135,7 +135,7 @@ module.exports = {
         __dirname,
         'node_modules/react-redux/lib/index.js'
       ),
-      'antd': path.resolve(__dirname, 'node_modules/antd-mobile'), //快捷方式
+      antd: path.resolve(__dirname, 'node_modules/antd'), //快捷方式
     },
   },
   module: {
@@ -194,6 +194,18 @@ module.exports = {
           { loader: 'style-loader' },
           { loader: 'css-loader' },
           { loader: 'stylus-loader' },
+        ],
+      },
+      {
+        test: /\.less/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: 'css-loader',
+          },
+          { loader: 'postcss-loader' },
+          { loader: 'less-loader' },
         ],
       },
       {
