@@ -14,6 +14,8 @@ if (module.hot) {
   module.hot.accept();
 }
 
+console.log('---12')
+
 import LeftNav from 'components/leftnav';
 import Header from 'components/header';
 import Footer from 'components/footer';

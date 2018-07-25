@@ -11,19 +11,37 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 
 const HappyPack = require('happypack'); //多线程运行
 
+const CleanWebpackPlugin = require('clean-webpack-plugin') //清空
+const CopyWebpackPlugin = require('copy-webpack-plugin'); //复制静态html
+
 var happyThreadPool = HappyPack.ThreadPool({ size: 4 });
+
+const webpack = require('webpack');
 
 const { argv } = process;
 let env = 'development'; //默认是开发模式
+let developmentMode = true;
 argv.forEach(v => {
   if (v == 'production') {
     env = 'production';
+    developmentMode = false;
   }
 });
 /**
  * 公共插件
  */
 const plugins = [
+  new CleanWebpackPlugin(['pc'], {
+    root: path.resolve(__dirname, 'dist'),
+  }),
+  new CopyWebpackPlugin([
+    { from: 'dll/Dll.js', to: path.resolve(__dirname, 'dist') },
+  ]),
+
+  new webpack.DllReferencePlugin({
+    context: __dirname,
+    manifest: require('./dll/manifest.json'),
+  }),
   new HtmlWebpackPlugin({
     template: `${__dirname}/src/index.html`, //源html
     inject: 'body', //注入到哪里
@@ -32,8 +50,9 @@ const plugins = [
   }),
   new MiniCssExtractPlugin({
     //css添加hash
-    filename: '[name]-[hash].css',
-    chunkFilename: '[id][hash].css',
+    // filename: '[name]-[hash].css',
+    // chunkFilename: '[id][hash].css',
+    chunkFilename: '[chunkhash].css',
   }),
   new HappyPack({
     //多线程运行 默认是电脑核数-1
@@ -54,13 +73,18 @@ const configDev = {
 const configPro = {
   plugins: plugins.concat(
     new UglifyJsPlugin({
-      sourceMap: true,
-      parallel: 4,
+      sourceMap: false, //webpack会生成map，所以这里不需要
+      parallel: 2,
       cache: true,
       uglifyOptions: {
         output: {
           comments: false,
           beautify: false,
+        },
+        compress: {
+          drop_console: true,
+          warnings: false,
+          drop_debugger: true,
         },
       },
       exclude: /(node_modules|bower_components)/,
@@ -68,19 +92,20 @@ const configPro = {
     new ExtendedDefinePlugin({
       //全局变量
       __LOCAL__: false,
+    }),
+    new BundleAnalyzerPlugin({
+      //另外一种方式
+      analyzerMode: 'server',
+      analyzerHost: '127.0.0.1',
+      analyzerPort: 8889,
+      reportFilename: 'report.html',
+      defaultSizes: 'parsed',
+      openAnalyzer: true,
+      generateStatsFile: false,
+      statsFilename: 'stats.json',
+      statsOptions: null,
+      logLevel: 'info',
     })
-    // new BundleAnalyzerPlugin({   //另外一种方式
-    //   analyzerMode: 'server',
-    //   analyzerHost: '127.0.0.1',
-    //   analyzerPort: 8889,
-    //   reportFilename: 'report.html',
-    //   defaultSizes: 'parsed',
-    //   openAnalyzer: true,
-    //   generateStatsFile: false,
-    //   statsFilename: 'stats.json',
-    //   statsOptions: null,
-    //   logLevel: 'info',
-    // }),
   ),
 };
 const config = env == 'development' ? configDev : configPro;
@@ -107,9 +132,10 @@ module.exports = {
   output: {
     //出口
     path: path.resolve(__dirname, 'dist'), //出口路径
-    filename: '[id].[hash].js', //出口文件名称
-    chunkFilename: '[id][hash].js', //按需加载名称
-    publicPath: '/', //公共路径
+    // filename: '[id].[hash].js', //出口文件名称
+    // chunkFilename: '[id][hash].js', //按需加载名称
+    chunkFilename: '[chunkhash].js', //按需加载名称
+    publicPath: developmentMode ? '/' : './', //公共路径
   },
   resolve: {
     mainFields: ['jsnext:main', 'browser', 'main'], //npm读取先后方式  jsnext:main 是采用es6模块写法
@@ -157,8 +183,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              minimize: env == 'development', //压缩
-              sourceMap: env == 'development', //map
+              minimize: !developmentMode, //压缩
             },
           },
         ],
@@ -169,7 +194,7 @@ module.exports = {
           loader: 'html-loader',
           options: {
             attrs: [':data-src'], //为了做图片懒加载，那些属性需要被，制定什么属性被该loader解析
-            minimize: env == 'development',
+            minimize: !developmentMode,
           },
         },
       },
@@ -192,7 +217,12 @@ module.exports = {
         include: [path.resolve(__dirname, 'src')],
         use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: !developmentMode, //压缩
+            },
+          },
           { loader: 'stylus-loader' },
         ],
       },

@@ -15,10 +15,10 @@
 - 支持 svg 解析
 - 支持自定义打包文件的目录
 - 支持热更新
-- 支持打包输出 map 文件
+- 支持打包输出 map 文件，去除console.log,注释
 - 支持打包压缩文件
 - 按需切割路由
-- 打包支持缓存，第二次打包速度很快
+- 增加dll加快打包速度
 
 ### 使用版本
 
@@ -111,6 +111,10 @@ argv.forEach(v => {
   }
 });
 ```
+### DllPlugin
+- 介绍 比如react我们不想每次都编译，浪费重复的时间，那么就可以将react加入到webpack.dll.config.js里面的vendors数组中，然后执行 ```npm run dll``` 
+- 会输出dll文件夹，包含Dll.js和manifest.json文件，
+- manifest.json 包含  vendors里面包的路径，编译是不会编译这些不需要编译的文件，会加快编译速度
 
 ##### 开发模式
 

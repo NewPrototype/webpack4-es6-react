@@ -11,7 +11,7 @@
     "start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile",
     "build": "npm run buildClean  &&  webpack  --mode production --progress --profile",
     "buildStats": "npm run buildClean  &&  webpack --progress --profile --mode production --json > stats.json",
-    "buildClean": "rimraf ./dist"
+    "dll":"webpack --config webpack.dll.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +38,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "cache-loader": "^1.2.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.2",
     "copyfiles": "^2.0.0",
     "css-loader": "^0.28.11",
     "extended-define-webpack-plugin": "^0.1.3",
