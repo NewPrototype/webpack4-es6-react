@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar } from 'antd';
+import { Avatar,Badge } from 'antd';
 
 import './Header.styl';
 
@@ -15,7 +15,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header">
-        <Avatar>U</Avatar>
+      <Badge count={1}><Avatar shape="square" icon="user" /></Badge>
       </div>
     );
   }

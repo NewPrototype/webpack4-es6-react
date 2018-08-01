@@ -44,26 +44,6 @@ const routers = [
       timeout: loadableOption.timeout,
     }),
   },
-  {
-    path: '/test',
-    exact: true,
-    component: Loadable({
-      loader: () => import("pages/test/index.js"),
-      loading: Loading,
-      delay: loadableOption.delay,
-      timeout: loadableOption.timeout,
-    }),
-  },
-  {
-    path: '/content/test1',
-    exact: true,
-    component: Loadable({
-      loader: () => import("pages/test/index.js"),
-      loading: Loading,
-      delay: loadableOption.delay,
-      timeout: loadableOption.timeout,
-    }),
-  },
 ]
 
 

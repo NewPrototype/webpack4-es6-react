@@ -186,6 +186,14 @@ module.exports = {
               minimize: !developmentMode, //压缩
             },
           },
+          {
+            loader: 'postcss-loader', options: {
+              ident: 'postcss',
+              plugins: (loader) => [
+                require('autoprefixer')(),
+              ]
+            }
+          },
         ],
       },
       {
@@ -223,6 +231,14 @@ module.exports = {
               minimize: !developmentMode, //压缩
             },
           },
+          {
+            loader: 'postcss-loader', options: {
+              ident: 'postcss',
+              plugins: (loader) => [
+                require('autoprefixer')(),
+              ]
+            }
+          },
           { loader: 'stylus-loader' },
         ],
       },
@@ -234,7 +250,14 @@ module.exports = {
           {
             loader: 'css-loader',
           },
-          { loader: 'postcss-loader' },
+          {
+            loader: 'postcss-loader', options: {
+              ident: 'postcss',
+              plugins: (loader) => [
+                require('autoprefixer')(),
+              ]
+            }
+          },
           { loader: 'less-loader' },
         ],
       },

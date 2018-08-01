@@ -12,12 +12,9 @@ import './Leftnav.styl';
 
 const router = [
   { title: '首页', key: '/home', childRouter: [] },
-  { title: '测试', key: '/test', childRouter: [] },
-  { title: '错误', key: '/notfound', childRouter: [] },
+  { title: '错误', key: '/notfound',  },
   {
-    title: '多路由', key: '/content', childRouter: [
-      { title: '测试', key: '/test1' },
-    ]
+    title: '多路由', key: '/content', 
   },
 ]
 
@@ -50,7 +47,7 @@ class LeftNav extends React.Component {
         >
           {
             router.map((value, index) => {
-              if (value.childRouter.length > 0) {
+              if (value.childRouter&&value.childRouter.length > 0) {
                 return <SubMenu key={value.key} title={<span><Icon type="setting" /><span>{value.title}</span></span>}>
                   {
                     value.childRouter.map((item, i) => {
