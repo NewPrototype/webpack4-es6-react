@@ -19,11 +19,10 @@ const getPerformanceTiming = () => {
   times.loadPage = t.loadEventEnd - t.loadEventStart;
   //加载耗时
   times.pageloadtime = t.loadEventEnd - t.navigationStart;
-
   //【重要】解析 DOM 树结构的时间
   //【原因】反省下你的 DOM 树嵌套是不是太多了！
   times.domReady = t.domContentLoadedEventEnd - t.domContentLoadedEventStart;
-
+  
   //【重要】重定向的时间
   //【原因】拒绝重定向！比如，http://example.com/ 就不该写成 http://example.com
   times.redirect = t.redirectEnd - t.redirectStart;

@@ -1,6 +1,4 @@
-前端开发一个 crm 项目的时候，因为项目内容比较庞大，导致 webpack 编译和打包都巨慢，实在是影响开发效率，所以着手升级 webpack。
-这个github也是一个学习前端新技术的平台。
-
+基于webpack4.0搭建并且学习webpack，以及其他相关技术
 ### [webpack4-es6-react][1]
 
 [webpack4-es6-react][2]是一个全新的基于 webpack4、react16、es6、antd-mobile 的前端架构实现方案，默认是 antd-mobile,也可以自定义配置 ui 框架如：antd
