@@ -8,7 +8,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile",
+    "start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile ",
     "build": "npm run buildClean  &&  webpack  --mode production --progress --profile",
     "buildStats": "npm run buildClean  &&  webpack --progress --profile --mode production --json > stats.json",
     "dll": "webpack --config webpack.dll.config.js",

@@ -139,6 +139,7 @@ module.exports = {
   },
   resolve: {
     mainFields: ['jsnext:main', 'browser', 'main'], //npm读取先后方式  jsnext:main 是采用es6模块写法
+    extensions: [".ts", ".tsx", ".js", ".json"],
     alias: {
       //快捷入口
       api: path.resolve(__dirname, 'src/api'),
@@ -167,6 +168,8 @@ module.exports = {
   module: {
     noParse: /node_modules\/(moment\.js)/, //不解析
     rules: [
+
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/, //排除

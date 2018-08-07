@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.styl';
 
-
+import {Hello} from './Hello'
 
 
 class Home extends React.Component {
@@ -15,7 +15,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home">
-        component home
+        <Hello compiler={123}/>
 		</div>
     );
   }
