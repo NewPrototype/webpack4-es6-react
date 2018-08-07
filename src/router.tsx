@@ -1,34 +1,41 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Loadable from 'react-loadable';
+import * as Loadable from 'react-loadable';
 
-
-const Loading = (props) => {
+const Loading = props => {
   if (props.error) {
-    return <div>Error! <button onClick={props.retry}>Retry</button></div>;
+    return (
+      <div>
+        Error! <button onClick={props.retry}>Retry</button>
+      </div>
+    );
   } else if (props.timedOut) {
-    return <div>Taking a long time... <button onClick={props.retry}>Retry</button></div>;
+    return (
+      <div>
+        Taking a long time... <button onClick={props.retry}>Retry</button>
+      </div>
+    );
   } else if (props.pastDelay) {
     return <div>Loading...</div>;
   } else {
     return null;
   }
-}
+};
 
 const loadableOption = {
   delay: 300,
   timeout: 1000,
   loading: Loading,
-}
+};
 
 const routers = [
   {
     path: '/',
     exact: true,
     component: Loadable({
-      loader: () => import("pages/home/index.js"),
+      loader: () => import('pages/home/index.js'),
       loading: Loading,
       delay: loadableOption.delay,
       timeout: loadableOption.timeout,
@@ -38,23 +45,22 @@ const routers = [
     path: '/home',
     exact: true,
     component: Loadable({
-      loader: () => import("pages/home/index.js"),
+      loader: () => import('pages/home/index.js'),
       loading: Loading,
       delay: loadableOption.delay,
       timeout: loadableOption.timeout,
     }),
   },
-]
-
+];
 
 const Routers = () => (
   <main>
     <Switch>
-      {
-        routers.map(({ component, path, exact }, index) => {
-          return <Route exact={exact} path={path} component={component} key={path} />
-        })
-      }
+      {routers.map(({ component, path, exact }, index) => {
+        return (
+          <Route exact={exact} path={path} component={component} key={path} />
+        );
+      })}
     </Switch>
   </main>
 );

@@ -127,7 +127,7 @@ module.exports = {
   },
   entry: {
     //入口
-    index: './src/index.js',
+    index: './src/index.tsx',
   },
   output: {
     //出口
@@ -170,13 +170,14 @@ module.exports = {
     rules: [
 
       { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/, //排除
-        include: [path.resolve(__dirname, 'src')], //包括
-        // use: ['babel-loader?cacheDirectory'],
-        loader: 'happypack/loader?id=babel',
-      },
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   exclude: /(node_modules|bower_components)/, //排除
+      //   include: [path.resolve(__dirname, 'src')], //包括
+      //   // use: ['babel-loader?cacheDirectory'],
+      //   loader: 'happypack/loader?id=babel',
+      // },
       {
         test: /\.css$/,
         // exclude: /(node_modules|bower_components)/,
