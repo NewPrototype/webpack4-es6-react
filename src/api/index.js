@@ -3,13 +3,13 @@ import axios from 'axios';
 import querystring from 'querystring';
 
 import config from './../config';
-const { server,devServer } = config;
+const { server, devServer } = config;
 import { message } from 'antd';
 
 
-if(__LOCAL__){   //true 为开发环境
+if (__LOCAL__) {   //true 为开发环境
   axios.defaults.baseURL = devServer;  //请求测试域名和端口
-}else {
+} else {
   axios.defaults.baseURL = server;  //请求正式域名和端口
 }
 
@@ -23,6 +23,10 @@ axios.interceptors.request.use(
       config.method === 'patch'
     ) {
       config.data = querystring.stringify(config.data);
+      config.headers = {  //json格式
+        'Content-Type': 'application/json; charset=UTF-8',
+        'X-Requested-With': 'XMLHttpRequest',
+      };
     }
     // config.headers = {
     //   authorization: `Bearer ${localStorage.getItem('toKen')}`,   //根据需求是否需要token
@@ -54,13 +58,15 @@ axios.interceptors.response.use(
   error => {
     message.error(error.response.data.message);
     return error.response.data;
-    // return Promise.reject(error);
   }
 );
 
-// 登陆
-export async function login(params = {}) {
-  return await axios.get('/login', { params });
-}
 
-// login({user:admin,password:'123456'}).then((data)=>{console.log('数据处理')})
+/**
+ * 登陆模块
+ */
+export const axiosLogin = {
+  login: async function login(params = {}) {
+    return await axios.get('/login', params);
+  }
+}

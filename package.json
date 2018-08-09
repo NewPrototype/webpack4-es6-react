@@ -9,8 +9,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile",
-    "build": "npm run buildClean  &&  webpack  --mode production --progress --profile",
-    "buildStats": "npm run buildClean  &&  webpack --progress --profile --mode production --json > stats.json",
+    "build": " webpack  --mode production --progress --profile",
+    "buildStats": " webpack --progress --profile --mode production --json > stats.json",
     "dll": "webpack --config webpack.dll.config.js",
     "test": "jest ",
     "test:dev": "jest --watch"
@@ -21,6 +21,8 @@
     "antd": "^3.6.4",
     "axios": "^0.18.0",
     "compression-webpack-plugin": "^1.1.11",
+    "normalize.css": "^8.0.0",
+    "querystring": "^0.2.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-loadable": "^5.4.0",

@@ -5,13 +5,12 @@ import Routers from './router'
 import Error from './util/error'  //错误日志
 import Performance from './util/performance'  //错误日志
 
-
-
 import Loadable from 'react-loadable';
-
 
 import 'babel-polyfill';
 
+import 'normalize.css';
+import 'antd/dist/antd.css'
 import './index.styl';
 
 if (module.hot) {

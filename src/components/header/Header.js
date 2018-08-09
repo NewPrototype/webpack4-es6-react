@@ -1,5 +1,7 @@
 import React from 'react';
-import { Avatar,Badge } from 'antd';
+import { Steps,Icon } from 'antd';
+const Step = Steps.Step;
+
 
 import './Header.styl';
 
@@ -15,7 +17,12 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header">
-      <Badge count={1}><Avatar shape="square" icon="user" /></Badge>
+        <Steps>
+          <Step status="finish" title="Login" icon={<Icon type="user" />} />
+          <Step status="finish" title="Verification" icon={<Icon type="solution" />} />
+          <Step status="process" title="Pay" icon={<Icon type="loading" />} />
+          <Step status="wait" title="Done" icon={<Icon type="smile-o" />} />
+        </Steps>
       </div>
     );
   }
