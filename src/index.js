@@ -5,8 +5,6 @@ import Routers from './router'
 import Error from './util/error'  //错误日志
 import Performance from './util/performance'  //错误日志
 
-import Loadable from 'react-loadable';
-
 import 'babel-polyfill';
 
 import 'normalize.css';
@@ -19,7 +17,6 @@ if (module.hot) {
 import LeftNav from 'components/leftnav';
 import Header from 'components/header';
 import Footer from 'components/footer';
-
 
 class App extends React.Component {
   componentWillMount() { }
