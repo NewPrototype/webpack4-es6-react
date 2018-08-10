@@ -1,11 +1,13 @@
-基于webpack4.0搭建并且学习webpack，以及其他相关技术
+基于 webpack4.0 搭建并且学习 webpack，以及其他相关技术
+
 ### [webpack4-es6-react][1]
 
 [webpack4-es6-react][2]是一个全新的基于 webpack4、react16、es6、antd-mobile 的前端架构实现方案，默认是 antd-mobile,也可以自定义配置 ui 框架如：antd
 
 ### 添加单元测试功能
-- 在终端中输入``` npm run test ```即可查看用例 
-- _test_是单元测试用例，里面会有详细说说
+
+- 在终端中输入`npm run test`即可查看用例
+- *test*是单元测试用例，里面会有详细说说
 
 ### 功能
 
@@ -18,10 +20,10 @@
 - 支持 svg 解析
 - 支持自定义打包文件的目录
 - 支持热更新
-- 支持打包输出 map 文件，去除console.log,注释
+- 支持打包输出 map 文件，去除 console.log,注释
 - 支持打包压缩文件
 - 按需切割路由
-- 增加dll加快打包速度
+- 增加 dll 加快打包速度
 
 ### 使用版本
 
@@ -114,10 +116,12 @@ argv.forEach(v => {
   }
 });
 ```
+
 ### DllPlugin
-- 介绍 比如react我们不想每次都编译，浪费重复的时间，那么就可以将react加入到webpack.dll.config.js里面的vendors数组中，然后执行 ```npm run dll``` 
-- 会输出dll文件夹，包含Dll.js和manifest.json文件，
-- manifest.json 包含  vendors里面包的路径，编译是不会编译这些不需要编译的文件，会加快编译速度
+
+- 介绍 比如 react 我们不想每次都编译，浪费重复的时间，那么就可以将 react 加入到 webpack.dll.config.js 里面的 vendors 数组中，然后执行 `npm run dll`
+- 会输出 dll 文件夹，包含 Dll.js 和 manifest.json 文件，
+- manifest.json 包含 vendors 里面包的路径，编译是不会编译这些不需要编译的文件，会加快编译速度
 
 ##### 开发模式
 
@@ -153,7 +157,7 @@ argv.forEach(v => {
 - <del>按需加载路由</del>
 - <del>输出 webpack 编译 json,分析编译时间</del>
 - <del>支持 axios</del>
-- 支持TypeScript
+- <del>支持 TypeScript(如果存在 ts 和 js 会使代码混乱，后续会单独分出一个 ts 项目))</del>
 - 提高 webpack 编译速度（一直在持续...）
 
 ### gitHub
@@ -163,3 +167,10 @@ https://github.com/NewPrototype/webpack4-es6-react
 [1]: https://github.com/NewPrototype/webpack4-es6-react
 [2]: https://github.com/NewPrototype/webpack4-es6-react
 [3]: http://localhost:9999/
+
+### 友情链接
+
+- react-cli 项目:https://github.com/NewPrototype/template-cli
+- react 下载模版文件:https://github.com/NewPrototype/template
+- electron 前端项目:https://github.com/NewPrototype/electron-web
+- electron Node 项目:https://github.com/NewPrototype/electron-server
