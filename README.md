@@ -170,7 +170,7 @@ https://github.com/NewPrototype/webpack4-es6-react
 
 ### 友情链接
 
-- react-cli 项目:https://github.com/NewPrototype/template-cli
-- react 下载模版文件:https://github.com/NewPrototype/template
+- react-cli 项目:https://github.com/NewPrototype/template-cli 
+- react 模版文件地址:https://github.com/NewPrototype/template
 - electron 前端项目:https://github.com/NewPrototype/electron-web
 - electron Node 项目:https://github.com/NewPrototype/electron-server
