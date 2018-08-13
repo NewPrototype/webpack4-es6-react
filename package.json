@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@types/react-loadable": "^5.4.1",
+    "@types/react-router-dom": "^4.3.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",

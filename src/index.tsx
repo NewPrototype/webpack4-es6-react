@@ -14,7 +14,7 @@ import './index.styl';
 if (module.hot) {
   module.hot.accept();
 }
-import LeftNav from 'components/leftnav';
+import LeftNav from 'components/leftnav/index.ts';
 import Header from 'components/header';
 import Footer from 'components/footer';
 

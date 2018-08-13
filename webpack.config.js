@@ -169,7 +169,7 @@ module.exports = {
     noParse: /node_modules\/(moment\.js)/, //不解析
     rules: [
 
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+      { test: /\.(tsx|ts)?$/, loader: "awesome-typescript-loader" },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       // {
       //   test: /\.(js|jsx)$/,
