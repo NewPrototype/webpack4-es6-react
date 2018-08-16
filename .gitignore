@@ -34,3 +34,4 @@ bower_components/
 .idea
 .cache-loader
 dll
+dist
