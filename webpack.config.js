@@ -73,7 +73,7 @@ const configDev = {
 const configPro = {
   plugins: plugins.concat(
     new UglifyJsPlugin({
-      sourceMap: false, //webpack会生成map，所以这里不需要
+      sourceMap: true, //webpack会生成map，所以这里不需要
       parallel: 2,
       cache: true,
       uglifyOptions: {
@@ -93,19 +93,19 @@ const configPro = {
       //全局变量
       __LOCAL__: false,
     }),
-    new BundleAnalyzerPlugin({
-      //另外一种方式
-      analyzerMode: 'server',
-      analyzerHost: '127.0.0.1',
-      analyzerPort: 8889,
-      reportFilename: 'report.html',
-      defaultSizes: 'parsed',
-      openAnalyzer: true,
-      generateStatsFile: false,
-      statsFilename: 'stats.json',
-      statsOptions: null,
-      logLevel: 'info',
-    })
+    // new BundleAnalyzerPlugin({
+    //   //另外一种方式
+    //   analyzerMode: 'server',
+    //   analyzerHost: '127.0.0.1',
+    //   analyzerPort: 8889,
+    //   reportFilename: 'report.html',
+    //   defaultSizes: 'parsed',
+    //   openAnalyzer: true,
+    //   generateStatsFile: false,
+    //   statsFilename: 'stats.json',
+    //   statsOptions: null,
+    //   logLevel: 'info',
+    // })
   ),
 };
 const config = env == 'development' ? configDev : configPro;
@@ -133,8 +133,8 @@ module.exports = {
     //出口
     path: path.resolve(__dirname, 'dist'), //出口路径
     // filename: '[id].[hash].js', //出口文件名称
-    // chunkFilename: '[id][hash].js', //按需加载名称
-    chunkFilename: '[chunkhash].js', //按需加载名称
+    chunkFilename: '[id][hash].js', //按需加载名称
+    // chunkFilename: '[chunkhash].js', //按需加载名称
     publicPath: developmentMode ? '/' : './', //公共路径
   },
   resolve: {
