@@ -31,8 +31,8 @@ argv.forEach(v => {
  * 公共插件
  */
 const plugins = [
-  new CleanWebpackPlugin(['pc'], {
-    root: path.resolve(__dirname, 'dist'),
+  new CleanWebpackPlugin(['dist'], {
+    root: __dirname,
   }),
   new CopyWebpackPlugin([
     { from: 'dll/Dll.js', to: path.resolve(__dirname, 'dist') },
