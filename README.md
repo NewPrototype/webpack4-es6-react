@@ -157,8 +157,10 @@ argv.forEach(v => {
 - <del>按需加载路由</del>
 - <del>输出 webpack 编译 json,分析编译时间</del>
 - <del>支持 axios</del>
-- <del>支持 TypeScript(如果存在 ts 和 js 会使代码混乱，后续会单独分出一个 ts 项目))</del>
+- <del>支持 TypeScript </del>
+- <del>jest 自动化测试</del>
 - 提高 webpack 编译速度（一直在持续...）
+
 
 ### gitHub
 
@@ -168,9 +170,14 @@ https://github.com/NewPrototype/webpack4-es6-react
 [2]: https://github.com/NewPrototype/webpack4-es6-react
 [3]: http://localhost:9999/
 
-### 友情链接
+### 项目介绍
+webpack4-es6-react:一个基于webpack4、es6、react、react-router4、axios技术的项目架构
+地址:https://github.com/NewPrototype/webpack4-es6-react
 
-- react-cli 项目:https://github.com/NewPrototype/template-cli 
-- react 模版文件地址:https://github.com/NewPrototype/template
-- electron 前端项目:https://github.com/NewPrototype/electron-web
-- electron Node 项目:https://github.com/NewPrototype/electron-server
+webpack4-es6-react-typescript:一个基于jest、typescript、webpack4、es6、react、react-router4、axios技术的项目架构
+地址:https://github.com/NewPrototype/webpack4-es6-react-typescript
+
+- react-cli 地址:https://github.com/NewPrototype/template-cli 
+- react 地址:https://github.com/NewPrototype/template
+- electron 地址:https://github.com/NewPrototype/electron-web
+- electron Node 地址:https://github.com/NewPrototype/electron-server
