@@ -157,7 +157,7 @@ argv.forEach(v => {
 - <del>按需加载路由</del>
 - <del>输出 webpack 编译 json,分析编译时间</del>
 - <del>支持 axios</del>
-- <del>支持 TypeScript </del>
+- <del>支持 TypeScript</del>
 - <del>jest 自动化测试</del>
 - 提高 webpack 编译速度（一直在持续...）
 
@@ -171,13 +171,27 @@ https://github.com/NewPrototype/webpack4-es6-react
 [3]: http://localhost:9999/
 
 ### 项目介绍
-webpack4-es6-react:一个基于webpack4、es6、react、react-router4、axios技术的项目架构
-地址:https://github.com/NewPrototype/webpack4-es6-react
 
-webpack4-es6-react-typescript:一个基于jest、typescript、webpack4、es6、react、react-router4、axios技术的项目架构
-地址:https://github.com/NewPrototype/webpack4-es6-react-typescript
+webpack4-es6-react
+- 介绍：一个基于webpack4、es6、react、react-router4、axios技术的项目架构
+- 地址：https://github.com/NewPrototype/webpack4-es6-react
 
-- react-cli 地址:https://github.com/NewPrototype/template-cli 
-- react 地址:https://github.com/NewPrototype/template
-- electron 地址:https://github.com/NewPrototype/electron-web
-- electron Node 地址:https://github.com/NewPrototype/electron-server
+webpack4-es6-react-typescript
+- 介绍：一个基于jest、typescript、webpack4、es6、react、react-router4、axios技术的项目架构
+- 地址：https://github.com/NewPrototype/webpack4-es6-react-typescript
+
+template-cli
+- 介绍：操作终端下载react和typescript模版
+- 地址：https://github.com/NewPrototype/template-cli
+
+template
+- 介绍：react、typescript模版文件
+- 地址：https://github.com/NewPrototype/template
+
+electron-web
+- 介绍：electron前端项目
+- 地址：https://github.com/NewPrototype/electron-web
+
+electron-node
+- 介绍：electron node服务器
+- 地址：https://github.com/NewPrototype/electron-server
