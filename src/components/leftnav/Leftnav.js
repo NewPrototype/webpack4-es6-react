@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
-import { Menu, Icon } from 'antd';
+import { Menu } from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -48,7 +48,7 @@ class LeftNav extends React.Component {
           {
             router.map((value, index) => {
               if (value.childRouter&&value.childRouter.length > 0) {
-                return <SubMenu key={value.key} title={<span><Icon type="setting" /><span>{value.title}</span></span>}>
+                return <SubMenu key={value.key} title={<span><span>{value.title}</span></span>}>
                   {
                     value.childRouter.map((item, i) => {
                       return <Menu.Item key={item.key}><Link to={`${value.key}${item.key}`}>{item.title}</Link></Menu.Item>
@@ -56,7 +56,7 @@ class LeftNav extends React.Component {
                   }
                 </SubMenu>
               } else {
-                return <Menu.Item key={value.key}> <Link to={value.key}><Icon type="setting" />{value.title}</Link></Menu.Item>
+                return <Menu.Item key={value.key}> <Link to={value.key}>{value.title}</Link></Menu.Item>
               }
             })
           }

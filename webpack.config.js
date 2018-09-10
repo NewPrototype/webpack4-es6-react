@@ -57,7 +57,7 @@ const plugins = [
   new HappyPack({
     //多线程运行 默认是电脑核数-1
     id: 'babel', //对于loaders id
-    loaders: ['cache-loader', 'babel-loader?cacheDirectory'], //是用babel-loader解析
+    loaders: ['babel-loader?cacheDirectory'], //是用babel-loader解析
     threadPool: happyThreadPool,
     verboseWhenProfiling: true, //显示信息
   }),
@@ -75,7 +75,7 @@ const configPro = {
     new UglifyJsPlugin({
       sourceMap: true, //webpack会生成map，所以这里不需要
       parallel: 2,
-      cache: true,
+      cache: false,
       uglifyOptions: {
         output: {
           comments: false,
@@ -83,8 +83,10 @@ const configPro = {
         },
         compress: {
           drop_console: true,
+          collapse_vars: true,
           warnings: false,
           drop_debugger: true,
+          reduce_vars: true,
         },
       },
       exclude: /(node_modules|bower_components)/,

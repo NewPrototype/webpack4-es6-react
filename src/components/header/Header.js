@@ -1,5 +1,5 @@
 import React from 'react';
-import { Steps,Icon } from 'antd';
+import { Steps } from 'antd';
 const Step = Steps.Step;
 
 
@@ -18,10 +18,10 @@ class Header extends React.Component {
     return (
       <div className="header">
         <Steps>
-          <Step status="finish" title="Login" icon={<Icon type="user" />} />
-          <Step status="finish" title="Verification" icon={<Icon type="solution" />} />
-          <Step status="process" title="Pay" icon={<Icon type="loading" />} />
-          <Step status="wait" title="Done" icon={<Icon type="smile-o" />} />
+          <Step status="finish" title="Login"  />
+          <Step status="finish" title="Verification"  />
+          <Step status="process" title="Pay"  />
+          <Step status="wait" title="Done"  />
         </Steps>
       </div>
     );
