@@ -5,9 +5,7 @@
 [webpack4-es6-react][2]是一个全新的基于 webpack4、react16、es6、antd-mobile 的前端架构实现方案，默认是 antd-mobile,也可以自定义配置 ui 框架如：antd
 
 ### 添加单元测试功能
-
-- 在终端中输入`npm run test`即可查看用例
-- *test*是单元测试用例，里面会有详细说说
+- 考虑许久还是把单元测试移到基于typescript的脚手架项目上，这个作为常规项目脚手架，typescript地址https://github.com/NewPrototype/webpack4-es6-react-typescript
 
 ### 功能
 
