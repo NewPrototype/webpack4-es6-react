@@ -11,7 +11,7 @@
     "start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile",
     "build": " webpack  --mode production --progress --profile",
     "buildStats": " webpack --progress --profile --mode production --json > stats.json",
-    "dll": "webpack --config webpack.dll.config.js",
+    "dll": "webpack --config webpack.dll.config.js"
   },
   "author": "",
   "license": "ISC",
