@@ -13,10 +13,10 @@
 - ```npm run dev``` 快捷打包，不压缩文件，发布测试环境
 - ```npm run build``` 正式打包，压缩文件,发布生产环境
 
-### 添加单元测试功能
+#### 添加单元测试功能
 - 考虑许久还是把单元测试移到基于typescript的脚手架项目上，这个作为常规项目脚手架，typescript地址https://github.com/NewPrototype/webpack4-es6-react-typescript
 
-### 功能
+#### 功能
 
 - 编译速度快（使用 happypack 插件实现多线程执行任务）
 - 按需加载（不同页面文件单独压缩）
@@ -32,7 +32,7 @@
 - 按需切割路由
 - 增加 dll 加快打包速度
 
-### 使用版本
+#### 使用版本
 
 - webpack 4.7.0
 - react 16.4.0
@@ -40,7 +40,7 @@
 - react-router-dom 4.3.1
 - antd 3.6.4
 
-### 目录结构
+#### 目录结构
 
 ```
 .
@@ -63,14 +63,14 @@
             └── index.js  -------- 页面样式
 ```
 
-### 克隆
+#### 克隆
 
 ```
 git clone https://github.com/NewPrototype/webpack4-es6-react.git
 ```
 
 
-### package.json
+#### package.json
 
 ###### script
 
@@ -78,7 +78,7 @@ git clone https://github.com/NewPrototype/webpack4-es6-react.git
 - npm run build 打包
 - npm run buildStats 输出 state.json，在官网http://webpack.github.io/analyse/中上传stats.json 分析数据
 
-### package.json- script 参数解析
+#### package.json- script 参数解析
 
 - --open 打开浏览器
 
