@@ -8,17 +8,16 @@
   ],
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile",
-    "build": " webpack  --mode production --progress --profile",
-    "buildStats": " webpack --progress --profile --mode production --json > stats.json",
-    "dll": "webpack --config webpack.dll.config.js"
+    "start": "webpack-dev-server  --open --color --hot --mode development --inline   --profile --env.dev=development",
+    "build": "webpack --progress --profile  --mode production --env.dev=production",
+    "dev": "  webpack --progress --profile  --mode development --env.dev=dev",
+    "dll": "  webpack  --mode production  --profile --inline --config webpack.dll.config.js "
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "antd": "^3.6.4",
     "axios": "^0.18.0",
-    "compression-webpack-plugin": "^1.1.11",
     "querystring": "^0.2.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -37,6 +36,7 @@
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "cache-loader": "^1.2.2",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^0.28.11",
@@ -59,7 +59,13 @@
     "url-loader": "^1.0.1",
     "webpack": "^4.7.0",
     "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^2.1.2",
+    "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
+  },
+  "theme": {
+    "font-size-base": "12px",
+    "layout-header-background": "rgb(64, 64, 64)",
+    "menu-dark-submenu-bg": "rgb(51, 51, 51)",
+    "mainColor": "#0590FF"
   }
 }

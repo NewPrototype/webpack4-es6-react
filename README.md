@@ -4,6 +4,20 @@
 
 [webpack4-es6-react][2]是一个全新的基于 webpack4、react16、es6、antd-mobile 的前端架构实现方案，默认是 antd-mobile,也可以自定义配置 ui 框架如：antd
 
+#### 使用步骤
+- ```cnpm i || npm i ```
+- ```npm run dll```
+- ```npm run start``` 启动
+- ```npm run dev``` 测试打包
+- ```npm run build``` 正式打包
+
+#### 命令注释
+- ```cnpm i || npm i ``` 安装依赖
+- ```npm run dll``` 公告包第一次生成，后续都不需要重新生成，加快打包速度
+- ```npm run start``` 启动项目
+- ```npm run dev``` 快捷打包，不压缩文件，发布测试环境
+- ```npm run build``` 正式打包，压缩文件,发布生产环境
+
 ### 添加单元测试功能
 - 考虑许久还是把单元测试移到基于typescript的脚手架项目上，这个作为常规项目脚手架，typescript地址https://github.com/NewPrototype/webpack4-es6-react-typescript
 
@@ -60,25 +74,6 @@
 git clone https://github.com/NewPrototype/webpack4-es6-react.git
 ```
 
-### 安装依赖
-
-```
-npm install
-```
-
-### 编译
-
-```
-npm run start （开发模式）
-```
-
-默认浏览器会自动打开 `http://localhost:9999`，编译完成
-
-### 打包
-
-```
-npm run build （生产模式）
-```
 
 ### package.json
 
@@ -105,15 +100,6 @@ npm run build （生产模式）
 
 ### webpack.config.js
 
-```
-const { argv } = process;
-let env = 'development'; //默认是开发模式
-argv.forEach(v => {
-  if (v == 'production') {
-    env = 'production';
-  }
-});
-```
 
 ### DllPlugin
 
@@ -121,17 +107,6 @@ argv.forEach(v => {
 - 会输出 dll 文件夹，包含 Dll.js 和 manifest.json 文件，
 - manifest.json 包含 vendors 里面包的路径，编译是不会编译这些不需要编译的文件，会加快编译速度
 
-##### 开发模式
-
-- 无需 map 文件
-- 无需压缩 css,js
-- 启动多线程执行编译任务
-
-##### 生产模式
-
-- 生成 map
-- 压缩文件
-- 自动添加 hash 版本号（解决缓存问题）
 
 ##### 速度
 
@@ -156,7 +131,7 @@ argv.forEach(v => {
 - <del>输出 webpack 编译 json,分析编译时间</del>
 - <del>支持 axios</del>
 - <del>支持 TypeScript</del>
-- <del>jest 自动化测试</del>
+- <del>加入DllPlugin加快打包</del>
 - 提高 webpack 编译速度（一直在持续...）
 
 

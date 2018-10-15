@@ -2,7 +2,7 @@ let path = require('path'),
   fs = require('fs'),
   webpack = require('webpack');
 
-let vendors = ['react', 'react-dom'];
+let vendors = ['react', 'react-dom','axios','antd','react-loadable','react-router','react-router-dom','querystring'];
 
 module.exports = {
   entry: {
