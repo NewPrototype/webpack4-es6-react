@@ -5,15 +5,10 @@
 [webpack4-es6-react][2]是一个全新的基于 webpack4、react16、es6、antd-mobile 的前端架构实现方案，默认是 antd-mobile,也可以自定义配置 ui 框架如：antd
 
 #### 使用步骤
-- ```cnpm i || npm i ```
-- ```npm run dll```
-- ```npm run start``` 启动
-- ```npm run dev``` 测试打包
-- ```npm run build``` 正式打包
-
-#### 命令注释
 - ```cnpm i || npm i ``` 安装依赖
-- ```npm run dll``` 公告包第一次生成，后续都不需要重新生成，加快打包速度
+- ```npm run dll``` 公共包第一次生成，后续都不需要重新生成，加快打包速度
+
+#### 运行方法
 - ```npm run start``` 启动项目
 - ```npm run dev``` 快捷打包，不压缩文件，发布测试环境
 - ```npm run build``` 正式打包，压缩文件,发布生产环境
