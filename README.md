@@ -5,16 +5,16 @@
 [webpack4-es6-react][2]是一个全新的基于 webpack4、react16、es6、antd-mobile 的前端架构实现方案，默认是 antd-mobile,也可以自定义配置 ui 框架如：antd
 
 #### 使用步骤
-- ```cnpm i || npm i ``` 安装依赖
+- ```cnpm i ``` 安装依赖,注意版本依赖版本
 - ```npm run dll``` 公共包第一次生成，后续都不需要重新生成，加快打包速度
+
+#### 锁定依赖版本
+- ``` npm install || yarn install```  
 
 #### 运行方法
 - ```npm run start``` 启动项目
 - ```npm run dev``` 快捷打包，不压缩文件，发布测试环境
 - ```npm run build``` 正式打包，压缩文件,发布生产环境
-
-#### 添加单元测试功能
-- 考虑许久还是把单元测试移到基于typescript的脚手架项目上，这个作为常规项目脚手架，typescript地址https://github.com/NewPrototype/webpack4-es6-react-typescript
 
 #### 功能
 
@@ -29,7 +29,7 @@
 - 支持热更新
 - 支持打包输出 map 文件，去除 console.log,注释
 - 支持打包压缩文件
-- 按需切割路由
+- 按需切割路由 router.js 里面
 - 增加 dll 加快打包速度
 
 #### 使用版本

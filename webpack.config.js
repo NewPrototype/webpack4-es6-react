@@ -38,7 +38,7 @@ const stylus = {
       loader: 'css-loader',
       options: {
         minimize: true, //压缩
-        sourceMap: true,
+        // sourceMap: true,
       },
     },
     { loader: 'stylus-loader' },
@@ -117,7 +117,7 @@ const plugins = {
     pluginsPublic,
     pluginsBuild,
     new UglifyJsPlugin({
-      sourceMap: false,
+      // sourceMap: true,
       parallel: true,
       cache: true,
       uglifyOptions: {
@@ -211,7 +211,7 @@ module.exports = (env, argv) => {
               loader: 'css-loader',
               options: {
                 minimize: minimize[dev], //压缩
-                sourceMap: minimize[dev],
+                // sourceMap: minimize[dev],
               },
             },
           ],
@@ -255,7 +255,7 @@ module.exports = (env, argv) => {
               loader: 'css-loader',
               options: {
                 minimize: minimize[dev], //压缩
-                sourceMap: minimize[dev],
+                // sourceMap: minimize[dev],
               },
             },
             { loader: 'less-loader', options: { modifyVars: theme } },
