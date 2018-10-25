@@ -147,7 +147,7 @@ module.exports = (env, argv) => {
       port: 8000, //端口
       historyApiFallback: true, //不会出现404页面，避免找不到
     },
-    devtool: devtool[dev], //cheap-eval-source-map  是一种比较快捷的map,没有映射列
+    // devtool: devtool[dev], //cheap-eval-source-map  是一种比较快捷的map,没有映射列
     performance: {
       maxEntrypointSize: 250000, //入口文件大小，性能指示
       maxAssetSize: 250000, //生成的最大文件
@@ -172,17 +172,12 @@ module.exports = (env, argv) => {
       alias: {
         //快捷入口
         api: path.resolve(__dirname, 'src/api'),
-        actions: path.resolve(__dirname, 'src/actions'),
         components: path.resolve(__dirname, 'src/components/'),
         pages: path.resolve(__dirname, 'src/pages/'),
-        sources: path.resolve(__dirname, 'src/sources/'),
-        stores: path.resolve(__dirname, 'src/stores/'),
         styles: path.resolve(__dirname, 'src/styles/'),
         lib: path.resolve(__dirname, 'src/lib/'),
         util: path.resolve(__dirname, 'src/lib/util/'),
         server: path.resolve(__dirname, 'src/lib/server'),
-        dingApi: path.resolve(__dirname, 'src/lib/dingApi.js'),
-        'react/lib/ReactMount': 'react-dom/lib/ReactMount',
         svg: path.resolve(__dirname, 'src/images/svg/'),
         images: path.resolve(__dirname, 'src/images'),
         react: path.resolve(__dirname, 'node_modules/react/'),
