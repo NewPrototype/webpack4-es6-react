@@ -1,4 +1,4 @@
-### [webpack4-es6-react][1]
+#### webpack4-es6-react
 
 描述:一个基于 webpack4、React16、react-router-dom、es6、antd、axios 的前端项目，路由支持按需加载或按模块加载,ui框架默认配置是 antd,支持按需加载组件;
 
@@ -76,20 +76,8 @@
 git clone https://github.com/NewPrototype/webpack4-es6-react.git
 ```
 
-#### package.json
 
-#### package.json- script 参数解析
-
-- --open 打开浏览器
-- --color webpack 输出信息颜色
-- --hot 热更新
-- --inline 热更新的方式
-- --mode development（开发模式） || production (生产模式)
-- --profile webpack 运行信息
-- --json > stats.json 输出 webpack 信息 在官网http://webpack.github.io/analyse/中上传stats.json 分析数据
-
-
-##### 速度
+#### 速度
 
 - 打包速度从 76830 毫秒提升到 14830 毫秒
   ```
@@ -106,7 +94,7 @@ git clone https://github.com/NewPrototype/webpack4-es6-react.git
   Built at: 2018-06-12 15:27:47
   ```
 
-### todoList
+#### todoList
 
 - <del>按需加载路由</del>
 - <del>输出 webpack 编译 json,分析编译时间</del>
