@@ -5,3 +5,4 @@ dist/
 dist
 .cache-loader
 dll
+dist/*
