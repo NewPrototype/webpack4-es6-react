@@ -29,16 +29,15 @@ const minimize = {
   production: true,
 };
 const stylus = {
-  dev: ['cache-loader','style-loader', 'css-loader', 'stylus-loader'],
+  dev: ['cache-loader', 'style-loader', 'css-loader', 'stylus-loader'],
   development: ['style-loader', 'css-loader', 'stylus-loader'],
   production: [
     { loader: MiniCssExtractPlugin.loader },
-
     {
       loader: 'css-loader',
       options: {
         minimize: true, //压缩
-        // sourceMap: true,
+        sourceMap: true,
       },
     },
     { loader: 'stylus-loader' },
@@ -54,23 +53,30 @@ const pluginsPublic = [
     inject: 'body', //注入到哪里
     filename: 'index.html', //输出后的名称
     hash: true, //为静态资源生成hash值
-    showErrors:true,
+    showErrors: true,
   }),
-
+  new BundleAnalyzerPlugin({   //另外一种方式
+    analyzerMode: 'server',
+    analyzerHost: '127.0.0.1',
+    analyzerPort: 8889,
+    reportFilename: 'report.html',
+    defaultSizes: 'parsed',
+    openAnalyzer: true,
+    generateStatsFile: false,
+    statsFilename: 'stats.json',
+    statsOptions: null,
+    logLevel: 'info',
+  }),
   new MiniCssExtractPlugin({
     chunkFilename: '[chunkhash].css',
   }),
   new HappyPack({
     //多线程运行 默认是电脑核数-1
     id: 'babel', //对于loaders id
-    loaders: ['cache-loader','babel-loader?cacheDirectory'], //是用babel-loader解析
+    loaders: ['cache-loader', 'babel-loader?cacheDirectory'], //是用babel-loader解析
     threadPool: happyThreadPool,
     verboseWhenProfiling: true, //显示信息
   }),
-  new webpack.ContextReplacementPlugin(
-    /moment[\\\/]locale$/,
-    /^\.\/(en|ko|ja|zh-cn)$/
-  ),
 ];
 /**
  * 公共打包插件
@@ -87,23 +93,13 @@ const pluginsBuild = [
     { from: 'dll/Dll.js', to: path.resolve(__dirname, 'dist') },
   ]),
   new webpack.HashedModuleIdsPlugin(),
-    new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require('./dll/manifest.json')
+  new webpack.DllReferencePlugin({
+    context: __dirname,
+    manifest: require('./dll/manifest.json')
   }),
+ 
 ];
-// new BundleAnalyzerPlugin({   //另外一种方式
-//   analyzerMode: 'server',
-//   analyzerHost: '127.0.0.1',
-//   analyzerPort: 8889,
-//   reportFilename: 'report.html',
-//   defaultSizes: 'parsed',
-//   openAnalyzer: true,
-//   generateStatsFile: false,
-//   statsFilename: 'stats.json',
-//   statsOptions: null,
-//   logLevel: 'info',
-// }),
+
 const plugins = {
   dev: [].concat(pluginsPublic, pluginsBuild),
   development: [].concat(
@@ -142,19 +138,15 @@ module.exports = (env, argv) => {
   const dev = env.dev;
   return {
     devServer: {
-      // contentBase: path.join(__dirname, 'dist'), //开发服务运行时的文件根目录
       compress: true, //开发服务器是否启动gzip等压缩
       port: 8000, //端口
       historyApiFallback: true, //不会出现404页面，避免找不到
     },
-    // devtool: devtool[dev], //cheap-eval-source-map  是一种比较快捷的map,没有映射列
+    devtool: devtool[dev], //cheap-eval-source-map  是一种比较快捷的map,没有映射列
     performance: {
       maxEntrypointSize: 250000, //入口文件大小，性能指示
       maxAssetSize: 250000, //生成的最大文件
       hints: 'warning', //依赖过大是否错误提示
-      // assetFilter: function(assetFilename) {
-      //   return assetFilename.endsWith('.js');
-      // }
     },
     entry: {
       //入口
@@ -206,7 +198,7 @@ module.exports = (env, argv) => {
               loader: 'css-loader',
               options: {
                 minimize: minimize[dev], //压缩
-                // sourceMap: minimize[dev],
+                sourceMap: minimize[dev],
               },
             },
           ],
@@ -218,7 +210,7 @@ module.exports = (env, argv) => {
             loader: 'html-loader',
             options: {
               attrs: [':data-src'], //为了做图片懒加载，那些属性需要被，制定什么属性被该loader解析
-              minimize:false,
+              minimize: false,
             },
           },
         },
@@ -250,7 +242,7 @@ module.exports = (env, argv) => {
               loader: 'css-loader',
               options: {
                 minimize: minimize[dev], //压缩
-                // sourceMap: minimize[dev],
+                sourceMap: minimize[dev],
               },
             },
             { loader: 'less-loader', options: { modifyVars: theme } },

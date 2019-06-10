@@ -1,21 +1,21 @@
-import React, {Component} from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import {importPath} from './loadable';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { importPath } from './loadable';
 /**
  * webpackChunkName 为需要按模块切割的名称
  */
 const routers = [
   {
     path: '/',
-    component: importPath ({
-      loader: () => import ('pages/home/index.js'),
+    component: importPath({
+      loader: () => import('pages/home/index.js'),
     }),
   },
   {
     path: '/home',
-    component: importPath ({
+    component: importPath({
       loader: () =>
-        import (/* webpackChunkName:"home" */ 'pages/home/index.js'),
+        import(/* webpackChunkName:"home" */ 'pages/home/index.js'),
     }),
   },
 ];
@@ -23,7 +23,7 @@ const routers = [
 const Routers = () => (
   <main>
     <Switch>
-      {routers.map (({component, path, exact}, index) => {
+      {routers.map(({ component, path, exact }, index) => {
         return (
           <Route exact={true} path={path} component={component} key={path} />
         );

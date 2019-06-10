@@ -1,7 +1,7 @@
-const logData = () => {};
+const logData = () => { };
 
 //前端错误日志监控
-window.onerror = function(errorMessage, scriptURI, lineNo, columnNo, error) {
+window.onerror = function (errorMessage, scriptURI, lineNo, columnNo, error) {
   console.log('errorMessage: ' + errorMessage); // 异常信息
   console.log('scriptURI: ' + scriptURI); // 异常文件路径
   console.log('lineNo: ' + lineNo); // 异常行号
@@ -16,10 +16,10 @@ window.onerror = function(errorMessage, scriptURI, lineNo, columnNo, error) {
     time: new Date(),
   };
   if (localStorage.getItem('errorLog')) {   //检查本地是否有错误日志
-    let errorLog = JSON.parse(localStorage.getItem('errorLog')); 
+    let errorLog = JSON.parse(localStorage.getItem('errorLog'));
     errorLog.push(errorInfo);
   } else {
-    localStorage.setItem('errorLog', JSON.stringify([errorInfo])); 
+    localStorage.setItem('errorLog', JSON.stringify([errorInfo]));
   }
 };
 
