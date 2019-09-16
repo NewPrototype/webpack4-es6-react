@@ -17,6 +17,7 @@ const devtool = {
   development: 'cheap-eval-source-map',
   production: 'source-map',
 };
+const PORT=8000;
 const publicPath = {
   dev: './',
   development: '/',
@@ -139,7 +140,7 @@ module.exports = (env, argv) => {
   return {
     devServer: {
       compress: true, //开发服务器是否启动gzip等压缩
-      port: 8000, //端口
+      port: PORT, //端口
       historyApiFallback: true, //不会出现404页面，避免找不到
     },
     devtool: devtool[dev], //cheap-eval-source-map  是一种比较快捷的map,没有映射列
@@ -155,8 +156,8 @@ module.exports = (env, argv) => {
     output: {
       //出口
       path: path.resolve(__dirname, 'dist'), //出口路径
-      filename: 'index.js',
-      chunkFilename: '[chunkhash].js',  //按需加载名称
+      chunkFilename: "[name]-[hash].js",
+      filename: "[name].js",
       publicPath: publicPath[dev], //公共路径
     },
     resolve: {

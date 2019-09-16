@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "antd": "^3.6.4",
+    "antd": "3.20.3",
     "axios": "^0.18.0",
     "js-yaml": "^3.13.1",
     "querystring": "^0.2.0",
