@@ -1,8 +1,5 @@
-
+.cache-loader
 node_modules
 bower_components/
-dist/
 dist
-.cache-loader
-dll
-dist/*
+coverage

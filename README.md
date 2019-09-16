@@ -1,6 +1,7 @@
 #### webpack4-es6-react
 
 描述:一个基于 webpack4、React16、react-router-dom、es6、antd、axios 的前端项目，路由支持按需加载或按模块加载,ui框架默认配置是 antd,支持按需加载组件;
+[typescript版本](https://github.com/NewPrototype/webpack4-es6-react)
 
 #### 运行项目
 - ```cnpm i ``` 安装依赖,注意版本依赖版本
